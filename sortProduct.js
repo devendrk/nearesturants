@@ -3,11 +3,12 @@ let resturantContainer = document.querySelector('#resturant-container');
 function createHtmlElement(element,attribute,value){
     let  el = document.createElement(element);
     el.setAttribute(attribute,value);
-    return el;
-     
+    return el;  
 }
  
-let divCardContainer = createHtmlElement('div','class','container resturantes');
+
+
+
 
 
 // Set up our HTTP request
@@ -20,6 +21,12 @@ xhr.onload = function(){
             let data = JSON.parse(xhr.responseText).restaurants;
             data.forEach(element => {
                 // console.log(element.name)
+                let divCardContainer = createHtmlElement('div','class','card-deck m-4');
+                let divCard = createHtmlElement('div','card')
+                let divCardBody = createHtmlElement('div','card-body');
+                let h5CardTitle= createHtmlElement('h5','card-title font-weight-bold');
+                h5CardTitle.textContent = element.name
+                
             });
             console.log(data[0].name)
             typeof(data.restaurants)
