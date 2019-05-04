@@ -30,16 +30,17 @@ function cards(element) {
   let lunchArray= element.lunches
   if(lunchArray.length>0){
       lunchArray.forEach(lunch=>{
-        li.textContent= lunch.title;  
+        li.textContent= lunch.title; 
         ulCard.appendChild(li)
-        divCardBody.appendChild(ulCard);
+        console.log(ulCard)
     })
+    divCardBody.appendChild(ulCard);
 }else{
     
     li.textContent= '';
     ulCard.appendChild(li)
     divCardBody.appendChild(ulCard);
-  }
+}
 //   console.log(lunchArray)
 }
 
