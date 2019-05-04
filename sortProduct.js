@@ -37,7 +37,7 @@ function cards(element) {
     divCardBody.appendChild(ulCard);
 }else{
     
-    li.textContent= '';
+    li.textContent= 'no menus available';
     ulCard.appendChild(li)
     divCardBody.appendChild(ulCard);
 }
