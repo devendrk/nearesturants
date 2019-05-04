@@ -1,0 +1,42 @@
+let resturantContainer = document.querySelector('#resturant-container');
+
+function createHtmlElement(element,attribute,value){
+    let  el = document.createElement(element);
+    el.setAttribute(attribute,value);
+    return el;
+     
+}
+ 
+let divCardContainer = createHtmlElement('div','class','container resturantes');
+
+
+// Set up our HTTP request
+let xhr = new XMLHttpRequest();
+xhr.onload = function(){
+    // process return data
+    if(this.readyState===4){
+        if(xhr.status>=200 && xhr.status <300){
+            // this will run when the request is successful
+            let data = JSON.parse(xhr.responseText).restaurants;
+            data.forEach(element => {
+                // console.log(element.name)
+            });
+            console.log(data[0].name)
+            typeof(data.restaurants)
+        }
+    }else {
+        console.log('request failed');
+    }
+
+    console.log('this will awlays runs');
+}
+
+// create and send a GET request
+
+//================IN CASE OF ERROR LIKE BELOW==============
+// ADD  THIS BEFORE URL: 'https://cors.io/?HTTP://URL
+//No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://internet.derp' is therefore not allowed access.
+
+
+xhr.open('GET','https://cors.io/?http://www.lolnas.fi/api/restaurants.json');
+xhr.send();
