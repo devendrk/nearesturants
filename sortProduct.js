@@ -1,16 +1,10 @@
-let resturantContainer = document.querySelector('#resturant-container');
+const root = document.querySelector('#root');
 
 function createHtmlElement(element,attribute,value){
     let  el = document.createElement(element);
     el.setAttribute(attribute,value);
     return el;  
 }
- 
-
-
-
-
-
 // Set up our HTTP request
 let xhr = new XMLHttpRequest();
 xhr.onload = function(){
@@ -20,16 +14,22 @@ xhr.onload = function(){
             // this will run when the request is successful
             let data = JSON.parse(xhr.responseText).restaurants;
             data.forEach(element => {
-                // console.log(element.name)
-                let divCardContainer = createHtmlElement('div','class','card-deck m-4');
-                let divCard = createHtmlElement('div','card')
-                let divCardBody = createHtmlElement('div','card-body');
-                let h5CardTitle= createHtmlElement('h5','card-title font-weight-bold');
-                h5CardTitle.textContent = element.name
-                
+                // console.log(element.name
+                let divCard = createHtmlElement('div','class','card bg-light mb-3')
+            divCard.style.cssText =  style="max-width: 18rem;"; 
+            let divCardHeader = createHtmlElement('div','class','card-header font-weight-bold');
+            divCardHeader.textContent = element.name;
+            let divCardBody = createHtmlElement('div','class','card-body');
+            let pCardText = createHtmlElement('p','class','card-text ');
+            pCardText.textContent = 'this will be dynamic list of meal'
+            divCardBody.appendChild(pCardText);
+            divCard.appendChild(divCardHeader);
+            divCard.appendChild(divCardBody);
+            root.appendChild(divCard);
+
             });
             console.log(data[0].name)
-            typeof(data.restaurants)
+            
         }
     }else {
         console.log('request failed');
