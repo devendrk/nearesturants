@@ -1,5 +1,6 @@
 const root = document.querySelector("#root");
 
+// Creates html elements and attributes
 function createHtmlElement(element, attribute, value) {
   let el = document.createElement(element);
   el.setAttribute(attribute, value);
@@ -32,29 +33,27 @@ function cards(element) {
   // card: menu list 
   let ulCard = createHtmlElement("ul", "class", "card-text ");
   let li = createHtmlElement("li", "class", "card-text list-unstyled");
-  let lunchArray = element.lunches
+  let lunchArray = element.lunches;
   if (lunchArray.length > 0) {
     lunchArray.forEach(lunch => {
       li.textContent = '-  ' + lunch.title;
-      ulCard.appendChild(li)
+      ulCard.appendChild(li);
     })
-    divCardBody.appendChild(ulCard);
   } else {
-
     li.textContent = 'no menus available';
-    ulCard.appendChild(li)
+    ulCard.appendChild(li);
     divCardBody.appendChild(ulCard);
   }
+  divCardBody.appendChild(ulCard);
 
   // horizontal line 
-  let hr = createHtmlElement('hr', 'class', 'mt-0')
+  let hr = createHtmlElement('hr', 'class', 'mt-0');
   divCardBody.appendChild(hr);
-
 
   // distance far
   let buttonDistance = createHtmlElement('button', 'class', 'btn btn-light')
-  buttonDistance.textContent = '2.5 km '
-  divCardBody.appendChild(buttonDistance)
+  buttonDistance.textContent = '2.5 km ';
+  divCardBody.appendChild(buttonDistance);
 }
 
 // Set up our HTTP request
@@ -70,10 +69,7 @@ xhr.onload = function () {
   } else {
     console.log("request failed");
   }
-
 };
-
-
 
 // create and send a GET request
 xhr.open("GET", "https://cors.io/?http://www.lolnas.fi/api/restaurants.json");
