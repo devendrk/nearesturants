@@ -14,7 +14,7 @@ function cards(element) {
   
   //card: div
   let divCard = createHtmlElement("div", "class", "card bg-light  text-center mb-5 ");
-  divCard.style.cssText = style = "width: 18rem;  m-4";
+  divCard.style.cssText = style = "width: 20rem;  m-4";
   cardContainer.appendChild(divCard);
 
   // card: header div
@@ -74,10 +74,7 @@ xhr.onload = function () {
 };
 
 
-/*================IN CASE OF ERROR LIKE BELOW==============
-// ADD  THIS BEFORE URL: 'https://cors.io/?HTTP://URL
-//No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://internet.derp' is therefore not allowed access.
-*/
+
 // create and send a GET request
 xhr.open("GET", "https://cors.io/?http://www.lolnas.fi/api/restaurants.json");
 xhr.send();
