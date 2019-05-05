@@ -1,4 +1,4 @@
-#### neaResturants
+## This app will show the nearest possible resturants thats why its name is  [nearesturants](https://devendrk.github.io/nearesturants/)
 - This app is made as an assignment while learning ajax.
 - It shows the Resturant Name, how far it is from you and menus if available.
 - you might need to enable  gps on your device to  see all its feature.
