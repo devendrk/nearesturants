@@ -7,13 +7,13 @@ function createHtmlElement(element, attribute, value) {
 }
 
 // Card container: div
-let cardContainer = createHtmlElement("div", "class", "container d-flex flex-wrap");
+let cardContainer = createHtmlElement("div", "class", "container d-flex flex-wrap justify-content-around");
 root.appendChild(cardContainer);
 
 function cards(element) {
   
   //card: div
-  let divCard = createHtmlElement("div", "class", "card bg-light  text-center m-3");
+  let divCard = createHtmlElement("div", "class", "card bg-light  text-center mb-5 ");
   divCard.style.cssText = style = "width: 18rem;  m-4";
   cardContainer.appendChild(divCard);
 
