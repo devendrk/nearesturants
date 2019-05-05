@@ -6,14 +6,19 @@ function createHtmlElement(element, attribute, value) {
   return el;
 }
 
+// Card container: div
+let cardContainer = createHtmlElement("div", "class", "container d-flex flex-wrap");
+root.appendChild(cardContainer);
+
 function cards(element) {
-    //card: div
-  let divCard = createHtmlElement("div", "class", "card bg-light mb-3");
-  divCard.style.cssText = style = "max-width: 18rem;";
-  root.appendChild(divCard);
+  
+  //card: div
+  let divCard = createHtmlElement("div", "class", "card bg-light  text-center m-3");
+  divCard.style.cssText = style = "width: 18rem;  m-4";
+  cardContainer.appendChild(divCard);
 
   // card: header div
-  let divCardHeader = createHtmlElement("div","class","card-header font-weight-bold");
+  let divCardHeader = createHtmlElement("div", "class", "card-header  bg-secondary text-white font-weight-bold");
   divCardHeader.textContent = element.name;
   divCard.appendChild(divCardHeader);
 
@@ -26,27 +31,35 @@ function cards(element) {
 
   // card: menu list 
   let ulCard = createHtmlElement("ul", "class", "card-text ");
-  let li= createHtmlElement("li", "class", "card-text list-unstyled");
-  let lunchArray= element.lunches
-  if(lunchArray.length>0){
-      lunchArray.forEach(lunch=>{
-        li.textContent= lunch.title; 
-        ulCard.appendChild(li)
-        console.log(ulCard)
+  let li = createHtmlElement("li", "class", "card-text list-unstyled");
+  let lunchArray = element.lunches
+  if (lunchArray.length > 0) {
+    lunchArray.forEach(lunch => {
+      li.textContent = '-  ' + lunch.title;
+      ulCard.appendChild(li)
     })
     divCardBody.appendChild(ulCard);
-}else{
-    
-    li.textContent= 'no menus available';
+  } else {
+
+    li.textContent = 'no menus available';
     ulCard.appendChild(li)
     divCardBody.appendChild(ulCard);
-}
-//   console.log(lunchArray)
+  }
+
+  // horizontal line 
+  let hr = createHtmlElement('hr', 'class', 'mt-0')
+  divCardBody.appendChild(hr);
+
+
+  // distance far
+  let buttonDistance = createHtmlElement('button', 'class', 'btn btn-light')
+  buttonDistance.textContent = '2.5 km '
+  divCardBody.appendChild(buttonDistance)
 }
 
 // Set up our HTTP request
 let xhr = new XMLHttpRequest();
-xhr.onload = function() {
+xhr.onload = function () {
   // process return data
   if (this.readyState === 4) {
     if (xhr.status >= 200 && xhr.status < 300) {
