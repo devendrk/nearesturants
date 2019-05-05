@@ -45,7 +45,7 @@ function cards(resturants) {
   //card: body & title div
   let divCardBody = createHtmlElement("div", "class", "card-body");
   let h5CardTitle = createHtmlElement("h5", "class", "card-title");
-  h5CardTitle.textContent = "Todays Menu";
+  h5CardTitle.textContent = "Todays Lunch";
   divCard.appendChild(divCardBody);
   divCardBody.appendChild(h5CardTitle);
 
@@ -70,7 +70,6 @@ function cards(resturants) {
   divCardBody.appendChild(hr);
 
   // get distance
-
   let buttonDistance = createHtmlElement('button', 'class', 'btn btn-light')
   divCardBody.appendChild(buttonDistance);
   let  _temp = 0;
