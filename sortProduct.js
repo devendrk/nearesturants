@@ -121,8 +121,12 @@ function searchResturantsByName(data) {
   let filterData = data.filter(resturant => resturant.name.toLowerCase().includes(inputSearchValue));
   let cardContainerDivId = document.querySelector('#card-container');
   cardContainerDivId.innerHTML = '';
-  filterData.forEach(cards);
-  inputText.value = '';
+  if(filterData.length>0){
+    filterData.forEach(cards);
+    inputText.value = '';
+  }else{
+    cardContainerDivId.innerHTML = "<span style='color: red;'>OOPs !  <br> cant find resturant, Pleas try another name.</span>"
+  }
   return filterData
 
 }
