@@ -7,6 +7,7 @@ xhr.onload = function () {
       // this will run when the request is successful
       let data = JSON.parse(xhr.responseText).restaurants;
       data.forEach(cards);
+
     }
   } else {
     console.log("request failed");
@@ -28,6 +29,7 @@ function createHtmlElement(element, attribute, value) {
 const root = document.querySelector("#root");
 // Card container: div
 let cardContainer = createHtmlElement("div", "class", "container d-flex flex-wrap justify-content-around");
+cardContainer.setAttribute('id','card-container');
 root.appendChild(cardContainer);
 
 // create the dynamic card
@@ -107,4 +109,19 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   }
 
 }
+
+
+function searchInput(resturantData){
+  let inputText = document.querySelector('#search-input');
+  let inputSearchValue = inputText.value.toLowerCase();
+  let filterData = resturantData.filter(resturant=> resturant.name.toLowerCase().includes(inputSearchValue));
+  inputText.value = '';
+  let cardContainerDivId = document.querySelector('#card-container');
+  cardContainerDivId.innerHTML = cards(filterData[0].name)
+  console.log('filtered  ', filterData[0].name)
+  return filterData
+
+}
+
+
 
