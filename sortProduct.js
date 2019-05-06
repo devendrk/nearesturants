@@ -1,4 +1,7 @@
 // Set up our HTTP request
+let resturants = []
+
+
 let xhr = new XMLHttpRequest();
 xhr.onload = function () {
   // process return data
@@ -6,6 +9,7 @@ xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status < 300) {
       // this will run when the request is successful
       let data = JSON.parse(xhr.responseText).restaurants;
+      resturants = data;
       data.forEach(cards);
     }
   } else {
@@ -16,6 +20,7 @@ xhr.onload = function () {
 // create and send a GET request
 xhr.open("GET", "https://cors.io/?http://www.lolnas.fi/api/restaurants.json");
 xhr.send();
+
 
 // Creates html elements and attributes
 function createHtmlElement(element, attribute, value) {
@@ -28,6 +33,7 @@ function createHtmlElement(element, attribute, value) {
 const root = document.querySelector("#root");
 // Card container: div
 let cardContainer = createHtmlElement("div", "class", "container d-flex flex-wrap justify-content-around");
+cardContainer.setAttribute('id', 'card-container');
 root.appendChild(cardContainer);
 
 // create the dynamic card
@@ -72,7 +78,7 @@ function cards(resturants) {
   // get distance
   let buttonDistance = createHtmlElement('button', 'class', 'btn btn-light')
   divCardBody.appendChild(buttonDistance);
-  let  _temp = 0;
+  let _temp = 0;
   navigator.geolocation.getCurrentPosition(function (position) {
     _temp = distance(position.coords.latitude, position.coords.longitude, resturants.latitude, resturants.longitude, 'K');
     buttonDistance.textContent = _temp.toFixed(2) + ' km away';
@@ -107,4 +113,19 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   }
 
 }
+
+//  search Resturants
+function searchResturantsByName(data) {
+  let inputText = document.querySelector('#search-input');
+  let inputSearchValue = inputText.value.toLowerCase();
+  let filterData = data.filter(resturant => resturant.name.toLowerCase().includes(inputSearchValue));
+  let cardContainerDivId = document.querySelector('#card-container');
+  cardContainerDivId.innerHTML = '';
+  filterData.forEach(cards);
+  inputText.value = '';
+  return filterData
+
+}
+
+
 
