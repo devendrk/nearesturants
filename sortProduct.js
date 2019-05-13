@@ -1,8 +1,12 @@
-// Set up our HTTP request
 let resturants = []
 
 
+// Set up our HTTP request
 let xhr = new XMLHttpRequest();
+
+// create and send a GET request
+xhr.open("GET", "https://cors.io/?http://www.lolnas.fi/api/restaurants.json");
+xhr.send();
 xhr.onload = function () {
   // process return data
   if (this.readyState === 4) {
@@ -10,16 +14,13 @@ xhr.onload = function () {
       // this will run when the request is successful
       let data = JSON.parse(xhr.responseText).restaurants;
       resturants = data;
-      data.forEach(cards);
+      data.forEach(cards)
     }
   } else {
     console.log("request failed");
   }
 };
 
-// create and send a GET request
-xhr.open("GET", "https://cors.io/?http://www.lolnas.fi/api/restaurants.json");
-xhr.send();
 
 
 // Creates html elements and attributes
@@ -130,6 +131,4 @@ function searchResturantsByName(data) {
   return filterData
 
 }
-
-
 
