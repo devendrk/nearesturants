@@ -1,3 +1,5 @@
+let resturants = []
+
 document.addEventListener('DOMContentLoaded', function (event) {
 	executeScripts();
 });
@@ -17,7 +19,7 @@ function renderRestaurantCards(resturants) {
 
 	let cardContainer = document.getElementById('card-container'),
 		divCard = createHtmlElement('div', 'class', 'card bg-light  text-center mb-5 '); //card: div
-	
+
 	// hmmm??
 	// divCard.style.cssText = style = 'width: 20rem;  m-4';
 	divCard.style.width = '20rem';
@@ -45,7 +47,7 @@ function renderRestaurantCards(resturants) {
 
 	lunchArray.forEach(lunch => {
 		// li.innerText = '-  ' + lunch.title; 
-		li.innerText = lunch.title; 
+		li.innerText = lunch.title;
 		ulCard.appendChild(li);
 	});
 
@@ -63,7 +65,7 @@ function renderRestaurantCards(resturants) {
 
 	// get distance
 	let buttonDistance = createHtmlElement('button', 'class', 'btn btn-light');
-	buttonDistance.addEventListener('click', function(){
+	buttonDistance.addEventListener('click', function () {
 		window.location = '//maps.google.com/?q=' + resturants.latitude + ',' + resturants.longitude;
 	});
 
@@ -98,6 +100,7 @@ function distance(lat1, lon1, lat2, lon2) {
 
 }
 
+
 //  search Resturants
 function searchResturantsByName(data) {
 	let inputText = document.querySelector('#search-input'),
@@ -116,15 +119,14 @@ function searchResturantsByName(data) {
 
 }
 
-function executeScripts() {	
+function executeScripts() {
 	const ROOT = document.querySelector('#root'); // get root div	
 	let cardContainer = createHtmlElement('div', 'class', 'container d-flex flex-wrap justify-content-around'); // Card container: div
-	
+
 	cardContainer.setAttribute('id', 'card-container');
 	ROOT.appendChild(cardContainer);
-	
+
 	// Set up our HTTP request
-	let resturants = []
 	let xhr = new XMLHttpRequest();
 
 	xhr.onload = function () {
