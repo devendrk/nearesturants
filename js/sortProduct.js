@@ -141,9 +141,7 @@ function executeScripts() {
 					return;
 				}
 
-				resturants = data.restaurants;
-				// why do you iterate on data object if you have assigned it to resturant?
-				// data.forEach(renderRestaurantCards);
+				resturants = data.restaurants; // this will update the empty array of resturants and that will be passed in onclick function in index.html
 
 				resturants.forEach(renderRestaurantCards);
 			}
